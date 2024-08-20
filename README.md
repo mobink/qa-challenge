@@ -1,18 +1,21 @@
-# qa-challenge
+# API Test Pipeline
 
 ## How to Run Tests
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/api-test-pipeline.git
-   cd api-test-pipeline
+1. Install dependencies: `pip install pytest requests pytest-html`
+2. Run tests: `pytest`
 
-2. Install dependencies:
-   pip install -r requirements.txt
+## Pipeline Structure
 
-3. Run tests:
-   pytest --alluredir=allure-results
+- `test_api.py`: Contains all API tests.
+- `pytest.ini`: Configuration for pytest, including HTML report generation.
 
-4. To run tests in Docker:
-     docker build -t api-test .
-     docker run --rm api-test 
+## Advantages/Disadvantages
+
+Advantages:
+- Comprehensive coverage of API endpoints.
+- Detailed error reporting for easy debugging.
+
+Disadvantages:
+- Requires manual setup and configuration.
+- Limited to Python-based environments.
