@@ -19,3 +19,22 @@ Advantages:
 Disadvantages:
 - Requires manual setup and configuration.
 - Limited to Python-based environments.
+
+
+## To containerize your test environment, create a Dockerfile:
+
+FROM python:3.8-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["pytest"]
+
+
+##  Build and run your Docker container:
+
+Build and run your Docker container:
