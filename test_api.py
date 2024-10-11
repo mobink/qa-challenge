@@ -83,9 +83,29 @@ def test_add_model_version(model_id):
         print("Add Model Version Error:", response.status_code, response.json())
 
 
+# An additional test for adding a different model version
+def test_add_model_version_different_case(model_id):
+    new_model_version = {
+        "name": "Another Model Version",
+        "hugging_face_model": "another-hugging-face-model"
+    }
+
+    response = requests.post(f"{BASE_URL}/models/{model_id}/versions", json=new_model_version)
+    if response.status_code == 200:
+        print("Add Model Version Different Case Success:", response.json())
+    elif response.status_code == 422:
+        print("Add Model Version Different Case Validation Error:", response.json())
+    else:
+        print("Add Model Version Different Case Error:", response.status_code, response.json())
+
+
 def run_tests():
     test_get_models()
     test_add_model()
+    # Call both version tests here
+    if 'model_id' in globals():  # Ensure model_id fixture context is available
+        test_add_model_version(model_id)
+        test_add_model_version_different_case(model_id)
 
 
 if __name__ == "__main__":
